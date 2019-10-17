@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import org.hamcrest.collection.IsMapContaining;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UtilsTest {
 
@@ -62,6 +65,14 @@ public class UtilsTest {
 
         Map<String, Integer> result = utils.assign(target, source);
 
-        assertEquals("returns the target", result, target);
+        assertThat(source.size(), is(2)); // source is untouched
+        assertThat(source, IsMapContaining.hasEntry("b", 3));
+        assertThat(source, IsMapContaining.hasEntry("c", 4));
+
+        assertThat(result, is(target));         // returns the target
+        assertThat(result.size(), is(3)); // should be { a: 1, b: 3, c: 4 }
+        assertThat(result, IsMapContaining.hasEntry("a", 1));
+        assertThat(result, IsMapContaining.hasEntry("b", 3));
+        assertThat(result, IsMapContaining.hasEntry("c", 4));
     }
 }
