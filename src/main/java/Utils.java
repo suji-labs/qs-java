@@ -1,7 +1,20 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Utils {
+    public static <T> Map<Integer, T> arrayToObject(List<T> a) {
+        Map<Integer, T> result = new HashMap<>();
+
+        for (int i = 0, len = a.size(); i < len; i++) {
+            result.put(i, a.get(i));
+        }
+
+        return result;
+    }
+
     public static <T> List<T> combine(T a, T b) {
         List<T> result = new ArrayList<T>();
 
