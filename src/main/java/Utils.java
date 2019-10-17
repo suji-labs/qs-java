@@ -1,3 +1,5 @@
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,5 +56,27 @@ public class Utils {
     public static <K, V>Map<K, V> assign(Map<K, V> target, Map<K, V> source) {
         target.putAll(source);
         return target;
+    }
+
+    public static String decode(String str, String charset) {
+        String strWithoutPlus = str.replaceAll("\\+", " ");
+        if (charset.toLowerCase().equals("iso-8859-1")) {
+            try {
+                return URLDecoder.decode(strWithoutPlus, "iso-8859-1");
+            } catch (UnsupportedEncodingException e) {
+                return strWithoutPlus;
+            }
+        }
+        // return UTF-8
+        try {
+            return URLDecoder.decode(strWithoutPlus, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            return strWithoutPlus;
+        }
+    }
+
+    // Overloading for default parameter
+    public static String decode(String str) {
+        return decode(str, "utf-8");
     }
 }

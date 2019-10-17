@@ -55,11 +55,11 @@ public class UtilsTest {
     }
 
     public void testAssign() {
-        Map<String, Integer> target = new HashMap<String, Integer>();
+        Map<String, Integer> target = new HashMap<>();
         target.put("a", 1);
         target.put("b", 2);
 
-        Map<String, Integer> source = new HashMap<String, Integer>();
+        Map<String, Integer> source = new HashMap<>();
         source.put("b", 3);
         source.put("c", 4);
 
@@ -74,5 +74,16 @@ public class UtilsTest {
         assertThat(result, IsMapContaining.hasEntry("a", 1));
         assertThat(result, IsMapContaining.hasEntry("b", 3));
         assertThat(result, IsMapContaining.hasEntry("c", 4));
+    }
+
+    @Test
+    public void testDecode() {
+        String url = "https%3A%2F%2Fr1---sn-ci5gup-cags.googlevideo.com%2Fvideoplayback%3Fpcm2cms%3Dyes%26mime%3Dvideo%252Fmp4%26pl%3D21%26itag%3D22%26\u0026itag=43\u0026type=video%2Fwebm%3B+codecs%3D%22vp8.0%2C+vorbis%22\u0026quality=medium";
+        String decodedURL = "https://r1---sn-ci5gup-cags.googlevideo.com/videoplayback?pcm2cms=yes&mime=video%2Fmp4&pl=21&itag=22&&itag=43&type=video/webm; codecs=\"vp8.0, vorbis\"&quality=medium";
+        assertThat(utils.decode(url), is(decodedURL));
+
+        String url2 = "https://onlineutf8tools.com/validate-utf8?input=Not%20all%20text%20is%20created%20equal.%20Some%20is%20missing%20bytes.%20ðŸŒ";
+        String decodedURL2 = "https://onlineutf8tools.com/validate-utf8?input=Not all text is created equal. Some is missing bytes. ðŸŒ";
+        assertThat(utils.decode(url2, "iso-8859-1"), is(decodedURL2));
     }
 }
