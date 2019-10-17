@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Utils {
     public static <T> List<T> combine(T a, T b) {
-        List<T> result = new ArrayList<>();
+        List<T> result = new ArrayList<T>();
 
         result.add(a);
         result.add(b);
@@ -12,7 +12,7 @@ public class Utils {
     }
 
     public static <T> List<T> combine(List<T> a, T b) {
-        List<T> result = new ArrayList<>();
+        List<T> result = new ArrayList<T>();
 
         result.addAll(a);
         result.add(b);
@@ -21,7 +21,7 @@ public class Utils {
     }
 
     public static <T> List<T> combine(T a, List<T> b) {
-        List<T> result = new ArrayList<>();
+        List<T> result = new ArrayList<T>();
 
         result.add(a);
         result.addAll(b);
@@ -30,7 +30,7 @@ public class Utils {
     }
 
     public static <T> List<T> combine(List<T> a, List<T> b) {
-        List<T> result = new ArrayList<>();
+        List<T> result = new ArrayList<T>();
 
         result.addAll(a);
         result.addAll(b);

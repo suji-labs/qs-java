@@ -10,9 +10,9 @@ public class UtilsTest {
     public void testCombine() {
         Utils utils = new Utils();
 
-        List<Integer> a = new ArrayList<>();
-        List<Integer> b = new ArrayList<>();
-        List<Integer> combined = new ArrayList<>();
+        List<Integer> a = new ArrayList<Integer>();
+        List<Integer> b = new ArrayList<Integer>();
+        List<Integer> combined = new ArrayList<Integer>();
 
         a.add(1);
         b.add(2);
