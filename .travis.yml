@@ -1,0 +1,14 @@
+# Travis CI Java documentation can be found in:
+# https://docs.travis-ci.com/user/languages/java/
+
+language: java
+
+sudo: false
+
+jdk:
+  - openjdk8
+
+script: mvn clean package
+
+notifications:
+  slack: sujiworld:XskevWgjrSqmOgTgqYpkMGjM
