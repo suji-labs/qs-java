@@ -50,4 +50,9 @@ public class Utils {
 
         return result;
     }
+
+    public static <K, V>Map<K, V> assign(Map<K, V> target, Map<K, V> source) {
+        target.putAll(source);
+        return target;
+    }
 }
