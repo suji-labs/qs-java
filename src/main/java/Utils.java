@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class Utils {
     public static <T> Map<Integer, T> arrayToObject(List<T> a) {
         Map<Integer, T> result = new HashMap<>();
